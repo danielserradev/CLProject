@@ -80,5 +80,26 @@ namespace UnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Add_AddMultipleItemsToIncreaseCapacity_CheckItemFromOldArray()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 4;
+            int actual;
+
+            //Assemble
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Add(5);
+            testList.Add(6);
+            testList.Add(7);
+            actual = testList[3];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

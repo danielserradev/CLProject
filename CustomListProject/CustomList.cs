@@ -8,11 +8,15 @@ namespace CustomListProject
 {
     public class CustomList<T>
     {
+        private T[] tempArray;
         private T[] items;
+        public int capacity = 4;
+        public int Count = 0;
 
         public CustomList()
         {
-            items = new T[4];
+            items = new T[capacity];
+            tempArray = new T[capacity];
         }
         
         public T this[int i]
@@ -20,13 +24,29 @@ namespace CustomListProject
             get { return items[i]; }
             set { items[i] = value; }
         }
+        
+        
         public void Add(T itemToAdd)
         {
-         
-            CustomList<T> customList = new CustomList<T>();
-            for (int i = 0; i < items.Length; i++)
+            items[Count] = itemToAdd;
+            Count++;
+
+            if(Count == capacity)
             {
-                customList[i] = itemToAdd;
+                
+                tempArray = items;        
+                capacity = capacity * 2;
+                items = new T[capacity];
+                for (int i = 0; i < Count; i++)
+                {
+                    items[i] = tempArray[i];
+                }
+                items[Count] = itemToAdd;
+                
+            }
+            else
+            {
+
             }
 
         }
