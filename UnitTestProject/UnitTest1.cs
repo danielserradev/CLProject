@@ -6,16 +6,13 @@ namespace UnitTestProject
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void Example()
-        {
-            //Arrange
+    //Arrange
 
-            //Assemble
+    //Assemble
 
-            //Assert
+    //Assert
 
-        }
+        
         [TestMethod]
         public void Add_AddToEmptyList_PutAtIndexZero()
         {
@@ -104,7 +101,7 @@ namespace UnitTestProject
         //-------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------
         [TestMethod]
-        public void Remove_RemoveValueFromList_DecreaseCapacity()
+        public void Remove_RemoveValueFromList_DecreaseCount()
         {
             //Arrange
             CustomList<int> testList = new CustomList<int>();
@@ -138,6 +135,26 @@ namespace UnitTestProject
             testList.Add(3);//2
             testList.Add(4);//3
             testList.Remove(2);
+            actual = testList[1];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveValueFromListThatAppearsMoreThanOnce_CheckIfTheCorrectValueWasRemoved()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 1;
+            int actual;
+
+
+            //Assemble
+            testList.Add(1);//0
+            testList.Add(2);//1
+            testList.Add(1);//2
+            testList.Add(4);//3
+            testList.Remove(1);
             actual = testList[1];
 
             //Assert

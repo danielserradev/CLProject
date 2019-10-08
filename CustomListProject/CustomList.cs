@@ -44,7 +44,22 @@ namespace CustomListProject
         }
         public bool Remove(T itemToRemove)
         {
-            return poop;
+            for(int i = 0; i < Count; i++)
+            {
+                if (items[i].Equals(itemToRemove))
+                {
+                    items[i].Equals(null);
+                    Count--;
+                    return true;
+                }
+                return false;
+
+            }
+           
+
+            
+            
         }
+        
     }
 }
