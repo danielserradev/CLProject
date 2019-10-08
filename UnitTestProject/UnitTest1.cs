@@ -101,5 +101,86 @@ namespace UnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
+        [TestMethod]
+        public void Remove_RemoveValueFromList_DecreaseCapacity()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 3;
+            int actual;
+
+
+            //Assemble
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(3);
+            actual = testList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveValueFromList_ItemsShifted()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 3;
+            int actual;
+
+
+            //Assemble
+            testList.Add(1);//0
+            testList.Add(2);//1
+            testList.Add(3);//2
+            testList.Add(4);//3
+            testList.Remove(2);
+            actual = testList[1];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveItemFromList_CheckBool()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            bool expected = true;
+            bool actual;
+
+
+            //Assemble
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            actual = testList.Remove(3);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveItemFromListThatsNotThere_CheckBool()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            bool expected = false;
+            bool actual;
+
+
+            //Assemble
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            actual = testList.Remove(5);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

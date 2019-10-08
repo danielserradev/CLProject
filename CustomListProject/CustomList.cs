@@ -30,10 +30,8 @@ namespace CustomListProject
         {
             items[Count] = itemToAdd;
             Count++;
-
             if(Count == capacity)
-            {
-                
+            {                
                 tempArray = items;        
                 capacity = capacity * 2;
                 items = new T[capacity];
@@ -41,15 +39,12 @@ namespace CustomListProject
                 {
                     items[i] = tempArray[i];
                 }
-                items[Count] = itemToAdd;
-                
-            }
-            else
-            {
-
-            }
-
+                items[Count] = itemToAdd;                
+            }           
         }
-
+        public bool Remove(T itemToRemove)
+        {
+            return poop;
+        }
     }
 }

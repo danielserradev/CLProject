@@ -10,18 +10,19 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
-            var numCounter = new CustomList<int>();
-            numCounter.Add(1);
-            numCounter.Add(2);
-            numCounter.Add(3);
-            numCounter.Add(4);
-            numCounter.Add(5);
-            Console.WriteLine(numCounter[0]);
-            Console.WriteLine(numCounter[1]);
-            Console.WriteLine(numCounter[2]);
-            Console.WriteLine(numCounter[3]);
-            Console.WriteLine(numCounter[4]);
-
+            //var numCounter = new CustomList<int>();
+            //numCounter.Add(1);
+            //numCounter.Add(2);
+            //numCounter.Add(3);
+            //numCounter.Add(4);
+            //numCounter.Add(5);
+            //Console.WriteLine(numCounter[0]);
+            //Console.WriteLine(numCounter[1]);
+            //Console.WriteLine(numCounter[2]);
+            //Console.WriteLine(numCounter[3]);
+            //Console.WriteLine(numCounter[4]);
+            List<int> test = new List<int>() { 1, 2, 3, 4, };
+            test.Remove(5);
 
             Console.ReadLine();
         }
