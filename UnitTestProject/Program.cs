@@ -10,13 +10,9 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
-            List<string> actual;
-            CustomList<string> list1 = new CustomList<string>();
-            CustomList<string> list2 = new CustomList<string>();
-            list1.Add("1");
-            list1.Add("2");
-            list2.Add("1");
-            list2.Add("3");
+            string actual;
+            List<string> list1 = new List<string>() { "1", "2" };
+            List<string> list2 = new List<string>() { "1", "3" };
             list1.ToString();
             list2.ToString();
             actual = (list1 - list2).ToString();

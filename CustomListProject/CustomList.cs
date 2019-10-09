@@ -56,7 +56,6 @@ namespace CustomListProject
             {
                 if (items[i].Equals(itemToRemove))
                 {
-                    items[i].Equals(null);
                     Count--;
                     for(int j = i; j < Count + 1; j++)
                     {
@@ -71,6 +70,61 @@ namespace CustomListProject
             }           
             return false;
         }
+        public string results;
+        public override string ToString()
+        {
+            if (Count == 1)
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    results = items[i].ToString();
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    if (i == Count - 1)
+                    {
+                        results += items[i].ToString();
+                    }
+                    else
+                    {
+                        results += items[i].ToString() + ", ";
+                    }
+                }
+            }
+            return results;
+        }
+        public static CustomList<T> operator + (CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> list3 = new CustomList<T>();
+            for (int i = 0; i < list1.Count; i++)
+            {
+                list3.Add(list1[i]);
+            }
+            for (int i = 0; i < list2.Count; i++)
+            {
+                list3.Add(list2[i]);
+            }
+            return list3;
+        }
+        public static CustomList<T> operator - (CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> tempList1 = list1 + new CustomList<T>();
+            for (int i = 0; i < list2.Count; i++)
+            {
+                tempList1.Remove(list2[i]);
+                
+            }
+            
+
+
+            return tempList1;
+        }
+
+
+        
         
     }
 }

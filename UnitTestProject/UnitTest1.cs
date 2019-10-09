@@ -201,11 +201,12 @@ namespace UnitTestProject
         [TestMethod]
         public void Remove_RemoveLastNumberInArray_HaveLastIndexRemoved()
         {
+            //Arrange
             CustomList<int> testList = new CustomList<int>();
             bool expected = true;
             bool actual = false;
 
-
+            //Assemble
             testList.Add(1);
             testList.Add(2);
             testList.Add(3);
@@ -220,10 +221,88 @@ namespace UnitTestProject
                 actual = true;
             }
             
-
+            //Assert
             Assert.AreEqual(expected, actual);
 
         }
+        [TestMethod]
+        public void Convert_InputOneInt_ConvertToString()
+        {
+            //Assemble
+            CustomList<int> testList = new CustomList<int>();
+            string expected = "123";
+            string actual;
 
+            //Arrange
+            testList.Add(123);
+            actual = testList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+            
+        }
+        [TestMethod]
+        public void Convert_InputMultipleInts_ConvertToString()
+        {
+            //Assemble
+            CustomList<int> testList = new CustomList<int>();
+            string expected = "1, 2, 3";
+            string actual;
+
+            //Arrange
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            actual = testList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_OverloadAddTwoLists_CombineLists()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            CustomList<string> testList4 = new CustomList<string>();
+            testList4.Add("1");
+            testList4.Add("2");
+            testList4.Add("3");
+            testList4.Add("4");
+            testList4.Add("5");
+            testList4.Add("6");
+            string expected = testList4.ToString();
+            string actual;
+            //Assemble     
+            testList1.Add("1");
+            testList1.Add("2");
+            testList2.Add("3");
+            testList2.Add("4");
+            testList3.Add("5");
+            testList3.Add("6");
+            actual = (testList1 + testList2 + testList3).ToString();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Minus_MinusOneListFromAnother_OnlyShowItemsLeftFromOriginalList()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            testList3.Add("2");
+            string expected = testList3.ToString();
+            string actual;
+            //Assemble     
+            testList1.Add("1");
+            testList1.Add("2");
+            testList2.Add("1");
+            testList2.Add("3");
+            actual = (testList1 - testList2).ToString();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
