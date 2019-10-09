@@ -198,6 +198,32 @@ namespace UnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Remove_RemoveLastNumberInArray_HaveLastIndexRemoved()
+        {
+            CustomList<int> testList = new CustomList<int>();
+            bool expected = true;
+            bool actual = false;
+
+
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(4);
+            try
+            {
+               Console.WriteLine(testList[3]);
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                actual = true;
+            }
+            
+
+            Assert.AreEqual(expected, actual);
+
+        }
 
     }
 }

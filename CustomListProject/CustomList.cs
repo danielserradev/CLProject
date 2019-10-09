@@ -21,7 +21,15 @@ namespace CustomListProject
         
         public T this[int i]
         {
-            get { return items[i]; }
+            get
+            {
+                if (i > Count - 1)
+                {              
+                    throw new System.ArgumentOutOfRangeException("index parameter is out of range.");
+                                       
+                }
+                return items[i];
+            }
             set { items[i] = value; }
         }
         
@@ -44,21 +52,24 @@ namespace CustomListProject
         }
         public bool Remove(T itemToRemove)
         {
-            for(int i = 0; i < Count; i++)
+            for(int i = 0; i <= Count; i++)
             {
                 if (items[i].Equals(itemToRemove))
                 {
                     items[i].Equals(null);
                     Count--;
+                    for(int j = i; j < Count + 1; j++)
+                    {
+                        items[j] = items[j + 1];
+                    }
                     return true;
                 }
-                return false;
-
-            }
-           
-
-            
-            
+                else
+                {
+                    items[i] = items[i];
+                }
+            }           
+            return false;
         }
         
     }
