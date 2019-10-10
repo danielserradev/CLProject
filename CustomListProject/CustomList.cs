@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable<T>
     {
         private T[] tempArray;
         private T[] items;
@@ -19,6 +20,23 @@ namespace CustomListProject
             tempArray = new T[capacity];
         }
         
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            foreach (T item in items)
+            {
+                if (item == null)
+                {
+                    break;
+                }
+                yield return item;
+            }
+        }
+
+        IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         public T this[int i]
         {
             get
@@ -32,6 +50,7 @@ namespace CustomListProject
             }
             set { items[i] = value; }
         }
+
         
         
         public void Add(T itemToAdd)
@@ -96,6 +115,9 @@ namespace CustomListProject
             }
             return results;
         }
+
+       
+
         public static CustomList<T> operator + (CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> list3 = new CustomList<T>();
@@ -122,7 +144,15 @@ namespace CustomListProject
 
             return tempList1;
         }
-
+        public void Iterate()
+        {
+            CustomList<T> tempList = new CustomList<T>();
+            
+            foreach(T item in items)
+            {
+                tempList.Add(item);
+            }
+        }
 
         
         

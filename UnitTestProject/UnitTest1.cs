@@ -226,6 +226,44 @@ namespace UnitTestProject
 
         }
         [TestMethod]
+        public void Remove_RemoveMultipleItemsfromList_CheckFirstIndex()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 4;
+            int actual;
+            // act
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(1);
+            testList.Remove(2);
+            testList.Remove(3);
+            actual = testList[0];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Remove_RemoveMultipleItemsfromList_CheckCount()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 1;
+            int actual;
+            // act
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Remove(1);
+            testList.Remove(2);
+            testList.Remove(3);
+            actual = testList.Count;
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
         public void Convert_InputOneInt_ConvertToString()
         {
             //Assemble
@@ -286,6 +324,33 @@ namespace UnitTestProject
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
+        public void Overload_OverloadAddTwoLists_CheckCount()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            CustomList<string> testList4 = new CustomList<string>();
+            testList4.Add("1");
+            testList4.Add("2");
+            testList4.Add("3");
+            testList4.Add("4");
+            testList4.Add("5");
+            testList4.Add("6");
+            int expected = 6;
+            int actual;
+            //Assemble     
+            testList1.Add("1");
+            testList1.Add("2");
+            testList2.Add("3");
+            testList2.Add("4");
+            testList3.Add("5");
+            testList3.Add("6");
+            actual = testList4.Count;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
         public void Minus_MinusOneListFromAnother_OnlyShowItemsLeftFromOriginalList()
         {
             //Arrange
@@ -304,5 +369,66 @@ namespace UnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
-    }
+        [TestMethod]
+        public void Minus_MinusOneListFromAnother_CheckCount()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            int expected = 1;
+            int actual;
+            //Assemble     
+            testList1.Add("1");
+            testList1.Add("2");
+            testList2.Add("1");
+            testList2.Add("3");
+            testList3 = testList1 - testList2;
+            actual = testList3.Count;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Enumerator_GetEachInt_LogEachInt()
+        {
+            //Arrange
+            CustomList<int> testList1 = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>();
+            CustomList<int> actual;
+            //Assemble
+            testList1.Add(1);
+            testList1.Add(2);
+            testList1.Add(3);
+            testList1.Add(4);
+            foreach(int item in testList1)
+            {
+                expected.Add(item);
+            }
+            actual = testList1;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Enumerator_GetEachString_LogEachString()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> expected = new CustomList<string>();
+            CustomList<string> actual;
+            //Assemble
+            testList1.Add("1");
+            testList1.Add("2");
+            testList1.Add("3");
+            //testList1.Add("4");
+            foreach (string item in testList1)
+            {
+                expected.Add(item);
+            }
+            actual = testList1;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+    }//fix increase capacity
+    //do zip
+
 }
