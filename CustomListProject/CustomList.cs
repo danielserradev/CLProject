@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable where T: IComparable <T>>
     {
         private T[] tempArray;
         private T[] items;
@@ -27,6 +27,7 @@ namespace CustomListProject
                 yield return items[i];
             }
         }
+        
 
 
         public T this[int i]
@@ -172,6 +173,29 @@ namespace CustomListProject
             }
             return list3;
         }
+        public void Sort <T> (CustomList<int> items) where  T : IComparable<T>
+        {
+            CustomList<int> sortedList = new CustomList<int>();
+            int lowestItem;
+          
+            while(sortedList.Count != items.Count)
+            {
+                for (int i = 0; i < items.Count; i++)
+                {
+                    if (items[i] <  items[i + 1])
+                    {
+                        
+                    }
+
+
+                }
+
+
+            }
+
+            
+        }
+
         
     }
 }

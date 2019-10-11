@@ -484,26 +484,32 @@ namespace UnitTestProject
         public void Zip_SecondListIsBigger_AddEachValueInOrder()
         {
             //Arrange
-            CustomList<string> testList1 = new CustomList<string>();
-            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList1 = new CustomList<string>() { "1","3","5" };
+            CustomList<string> testList2 = new CustomList<string>() { "2", "4", "6", "8" };
             CustomList<string> testList3 = new CustomList<string>();
             string expected = "1, 2, 3, 4, 5, 6, 8";
             CustomList<string> actual;
 
             //Assemble
-            testList1.Add("1");
-            testList1.Add("3");
-            testList1.Add("5");
-            testList2.Add("2");
-            testList2.Add("4");
-            testList2.Add("6");
-            testList2.Add("8");
-
-
             actual = testList3.Zip(testList1, testList2);
 
-
-
+            //Assert
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+        [TestMethod]
+        public void Sort_TakeUnorderedNumbers_SortThemLowestToHighest()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>() { 1, 2, 3, 4 };
+            CustomList<int> actual;
+            //Assemble
+            testList.Add(1);
+            testList.Add(3);
+            testList.Add(2);
+            testList.Add(4);
+            testList.Sort<int>(testList);
+            actual = testList;
             //Assert
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
