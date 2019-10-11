@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T> : IEnumerable<T>
+    public class CustomList<T> : IEnumerable
     {
         private T[] tempArray;
         private T[] items;
@@ -19,23 +19,15 @@ namespace CustomListProject
             items = new T[capacity];
             tempArray = new T[capacity];
         }
-        
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+
+        public IEnumerator GetEnumerator()
         {
-            foreach (T item in items)
+            for(int i = 0; i < Count; i++)
             {
-                if (item == null)
-                {
-                    break;
-                }
-                yield return item;
+                yield return items[i];
             }
         }
 
-        IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
 
         public T this[int i]
         {
@@ -51,23 +43,23 @@ namespace CustomListProject
             set { items[i] = value; }
         }
 
-        
-        
+
         public void Add(T itemToAdd)
         {
             items[Count] = itemToAdd;
             Count++;
-            if(Count == capacity)
-            {                
-                tempArray = items;        
+            if (Count == capacity)
+            {
+
+                tempArray = items;
                 capacity = capacity * 2;
                 items = new T[capacity];
                 for (int i = 0; i < Count; i++)
                 {
                     items[i] = tempArray[i];
-                }
-                items[Count] = itemToAdd;                
-            }           
+                }                
+            }
+            
         }
         public bool Remove(T itemToRemove)
         {
@@ -144,17 +136,25 @@ namespace CustomListProject
 
             return tempList1;
         }
-        public void Iterate()
+        public CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
-            CustomList<T> tempList = new CustomList<T>();
-            
-            foreach(T item in items)
-            {
-                tempList.Add(item);
-            }
-        }
+            CustomList<T> list3 = new CustomList<T>();
 
-        
-        
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                list3.Add(list1[i]);
+                list3.Add(list2[i]);
+                
+                
+                
+            }
+
+            return list3;
+        }
+        public void GetShortesList()
+        {
+
+        }
     }
 }

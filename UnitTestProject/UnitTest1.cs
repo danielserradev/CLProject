@@ -406,7 +406,7 @@ namespace UnitTestProject
             }
             actual = testList1;
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.ToString(), actual.ToString());
         }
         [TestMethod]
         public void Enumerator_GetEachString_LogEachString()
@@ -419,16 +419,65 @@ namespace UnitTestProject
             testList1.Add("1");
             testList1.Add("2");
             testList1.Add("3");
-            //testList1.Add("4");
+            testList1.Add("4");
             foreach (string item in testList1)
             {
                 expected.Add(item);
             }
             actual = testList1;
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.ToString(), actual.ToString());
         }
-    }//fix increase capacity
-    //do zip
+        [TestMethod]
+        public void Zip_TakeEachList_AddEachValueInOrder()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            string expected = "1, 2, 3, 4, 5, 6" ;
+            CustomList<string> actual;
+            
+            //Assemble
+            testList1.Add("1");
+            testList1.Add("3");
+            testList1.Add("5");
+            testList2.Add("2");
+            testList2.Add("4");
+            testList2.Add("6");
+            
+            actual = testList3.Zip(testList1, testList2);
+           
+            
+
+            //Assert
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+        [TestMethod]
+        public void Zip_TakeTwoDifferentSizedList_AddEachValueInOrder()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            string expected = "1, 2, 3, 4, 5 ";
+            CustomList<string> actual;
+
+            //Assemble
+            testList1.Add("1");
+            testList1.Add("3");
+            testList1.Add("5");
+            testList2.Add("2");
+            testList2.Add("4");
+            
+
+            actual = testList3.Zip(testList1, testList2);
+
+
+
+            //Assert
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+    }
 
 }
