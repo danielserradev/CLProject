@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomListProject;
+using System.Collections.Generic;
+
 namespace UnitTestProject
 {
     [TestClass]
@@ -500,19 +502,15 @@ namespace UnitTestProject
         public void Sort_TakeUnorderedNumbers_SortThemLowestToHighest()
         {
             //Arrange
-            CustomList<int> testList = new CustomList<int>();
-            CustomList<int> expected = new CustomList<int>() { 1, 2, 3, 4 };
+            CustomList<int> testList = new CustomList<int>() { 1, 3, 2, 5 };
+            CustomList<int> expected = new CustomList<int>() { 1, 2, 3, 5 };
             CustomList<int> actual;
             //Assemble
-            testList.Add(1);
-            testList.Add(3);
-            testList.Add(2);
-            testList.Add(4);
-            testList.Sort<int>(testList);
+            //testList.Sort();
             actual = testList;
             //Assert
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
     }
-
+    
 }
