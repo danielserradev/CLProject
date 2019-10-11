@@ -81,9 +81,10 @@ namespace CustomListProject
             }           
             return false;
         }
-        public string results;
+  
         public override string ToString()
         {
+            string results =  "";
             if (Count == 1)
             {
                 for (int i = 0; i < Count; i++)
@@ -139,22 +140,38 @@ namespace CustomListProject
         public CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> list3 = new CustomList<T>();
-
-
-            for (int i = 0; i < list1.Count; i++)
+            if(list1.Count == list2.Count)
             {
-                list3.Add(list1[i]);
-                list3.Add(list2[i]);
-                
-                
-                
+                for (int i = 0; i < list1.Count; i++)
+                {
+                    list3.Add(list1[i]);
+                    list3.Add(list2[i]);                    
+                }
             }
-
+            else if(list1.Count > list2.Count)
+            {
+                for (int i = 0; i < list1.Count; i++)
+                {
+                    list3.Add(list1[i]);
+                    if (list2.Count - 1 >= i)
+                    {
+                        list3.Add(list2[i]);
+                    }
+                }
+            }
+            else if (list1.Count < list2.Count)
+            {
+                for (int i = 0; i < list2.Count; i++)
+                {                    
+                    if (list1.Count - 1 >= i)
+                    {
+                        list3.Add(list1[i]);
+                    }
+                    list3.Add(list2[i]);
+                }
+            }
             return list3;
         }
-        public void GetShortesList()
-        {
-
-        }
+        
     }
 }

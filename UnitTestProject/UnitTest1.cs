@@ -442,6 +442,7 @@ namespace UnitTestProject
             testList1.Add("1");
             testList1.Add("3");
             testList1.Add("5");
+
             testList2.Add("2");
             testList2.Add("4");
             testList2.Add("6");
@@ -454,13 +455,13 @@ namespace UnitTestProject
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
         [TestMethod]
-        public void Zip_TakeTwoDifferentSizedList_AddEachValueInOrder()
+        public void Zip_FirstListIsBigger_AddEachValueInOrder()
         {
             //Arrange
             CustomList<string> testList1 = new CustomList<string>();
             CustomList<string> testList2 = new CustomList<string>();
             CustomList<string> testList3 = new CustomList<string>();
-            string expected = "1, 2, 3, 4, 5 ";
+            string expected = "1, 2, 3, 4, 5";
             CustomList<string> actual;
 
             //Assemble
@@ -470,6 +471,34 @@ namespace UnitTestProject
             testList2.Add("2");
             testList2.Add("4");
             
+
+
+            actual = testList3.Zip(testList1, testList2);
+
+
+
+            //Assert
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+        [TestMethod]
+        public void Zip_SecondListIsBigger_AddEachValueInOrder()
+        {
+            //Arrange
+            CustomList<string> testList1 = new CustomList<string>();
+            CustomList<string> testList2 = new CustomList<string>();
+            CustomList<string> testList3 = new CustomList<string>();
+            string expected = "1, 2, 3, 4, 5, 6, 8";
+            CustomList<string> actual;
+
+            //Assemble
+            testList1.Add("1");
+            testList1.Add("3");
+            testList1.Add("5");
+            testList2.Add("2");
+            testList2.Add("4");
+            testList2.Add("6");
+            testList2.Add("8");
+
 
             actual = testList3.Zip(testList1, testList2);
 
