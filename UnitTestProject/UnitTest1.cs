@@ -498,19 +498,8 @@ namespace UnitTestProject
             //Assert
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
-        [TestMethod]
-        public void Sort_TakeUnorderedNumbers_SortThemLowestToHighest()
-        {
-            //Arrange
-            CustomList<int> testList = new CustomList<int>() { 1, 3, 2, 5 };
-            CustomList<int> expected = new CustomList<int>() { 1, 2, 3, 5 };
-            CustomList<int> actual;
-            //Assemble
-            //testList.Sort();
-            actual = testList;
-            //Assert
-            Assert.AreEqual(expected.ToString(), actual.ToString());
-        }
+        
+        
     }
     
 }
